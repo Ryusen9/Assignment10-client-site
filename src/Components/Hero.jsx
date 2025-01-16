@@ -13,7 +13,7 @@ const Hero = () => {
           next project. Explore to find new opportunity for your imagination!
         </p>
         <div>
-          <Button text="Explore"/>
+          <Button text="Explore" classList="border-2 px-6 py-3 rounded-xl mt-3 text-white hover:bg-purple-500 duration-300 " />
         </div>
       </div>
       <div

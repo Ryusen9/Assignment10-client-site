@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 
-const Button = ({text, leftIcon, rightIcon}) => {
+const Button = ({text, leftIcon, rightIcon, classList}) => {
   return (
-    <button>
+    <button className={`${classList}`}>
         {leftIcon}
         <p>{text}</p>
         {rightIcon}
@@ -14,6 +14,7 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
   leftIcon: PropTypes.string,
   rightIcon: PropTypes.string,
+  classList: PropTypes.string,
 }
 
 export default Button
