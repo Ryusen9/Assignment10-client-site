@@ -1,11 +1,19 @@
-import Hero from "../Components/Hero"
+import Hero from "../Components/Hero";
+import MarqueeComponent from "../Components/Marquee";
 
 const HomeLayout = () => {
   return (
     <div>
-        <Hero/>
+      <div className="min-h-screen w-full">
+        <div className="h-[80vh]">
+          <Hero />
+        </div>
+        <div className="h-[20vh]">
+            <MarqueeComponent/>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomeLayout
+export default HomeLayout;

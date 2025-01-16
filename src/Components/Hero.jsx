@@ -3,7 +3,7 @@ import heroImage from "/Images/pexels-mart-production-7230322.jpg";
 
 const Hero = () => {
   return (
-    <div className="w-full h-[80vh] flex flex-col lg:flex-row items-center justify-start overflow-x-hidden bg-center bg-cover  bg-no-repeat size-fit bg-gray-800">
+    <div className="w-full h-full flex flex-col lg:flex-row items-center justify-start overflow-x-hidden bg-center bg-cover  bg-no-repeat size-fit bg-gray-800">
       <div className="p-[10%]">
         <p className="text-4xl text-white md:text-7xl font-semibold">
           Welcome to <br /> <span className="text-purple-500 ">CrowdCube</span>
