@@ -17,9 +17,11 @@
     "react-awesome-reveal": "^4.3.1",
     "react-dom": "^18.3.1",
     "react-fast-marquee": "^1.6.5",
+    "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.1",
     "react-use": "^17.6.0",
-    "sweetalert2": "^11.15.10"
+    "sweetalert2": "^11.15.10",
+    "swiper": "^11.2.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
@@ -27,6 +29,7 @@
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
+    "daisyui": "^4.12.23",
     "eslint": "^9.17.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",

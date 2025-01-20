@@ -6,9 +6,10 @@ export default {
   ],
   theme: {
     fontFamily: {
-      Grotesk: ['Schibsted Grotesk', 'serif']
+      Grotesk: ['Schibsted Grotesk', 'serif'],
+      Teko: ['Teko', 'serif']
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [require('daisyui'),],
 }
