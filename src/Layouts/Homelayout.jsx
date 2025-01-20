@@ -1,5 +1,6 @@
 import Hero from "../Components/Hero";
 import MarqueeComponent from "../Components/Marquee";
+import Purpose from "../Components/Purpose";
 
 const HomeLayout = () => {
   return (
@@ -10,6 +11,9 @@ const HomeLayout = () => {
         </div>
         <div className="h-[20vh]">
             <MarqueeComponent/>
+        </div>
+        <div>
+          <Purpose/>
         </div>
       </div>
     </div>
