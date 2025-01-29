@@ -87,21 +87,21 @@ const Navbar = () => {
               <span>Home</span>
             </Link>
             <Link
-              to="/add-campaign"
+              to="/addCampaign"
               className="flex items-center gap-2 text-zinc-900 font-medium py-2 text-sm lg:text-base md:py-0 px-4 hover:text-purple-400 duration-300"
             >
               <FaPlusCircle />
               <span>Add Campaign</span>
             </Link>
             <Link
-              to="/my-campaign"
+              to="/myCampaign"
               className="flex items-center gap-2 text-zinc-900 font-medium py-2 text-sm lg:text-base md:py-0 px-4 hover:text-purple-400 duration-300"
             >
               <FaUser />
               <span>My Campaign</span>
             </Link>
             <Link
-              to="/my-donation"
+              to="/myDonations"
               className="flex items-center gap-2 text-zinc-900 font-medium py-2 text-sm lg:text-base md:py-0 px-4 hover:text-purple-400 duration-300"
             >
               <FaDonate />

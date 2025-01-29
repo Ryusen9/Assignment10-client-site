@@ -5,11 +5,23 @@ import "./index.css";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Theme } from "@radix-ui/themes";
+import CampaignLayout from "./Layouts/CampaignLayout.jsx";
+import HomeLayout from "./Layouts/Homelayout.jsx";
 
 const routers = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <HomeLayout/>
+      },
+      {
+        path: "/addCampaign",
+        element: <CampaignLayout/>
+      }
+    ]
   },
 ]);
 
