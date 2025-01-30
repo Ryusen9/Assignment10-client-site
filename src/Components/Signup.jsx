@@ -1,14 +1,69 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { ContextProvider } from "../Context/Context";
+import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
 const Signup = () => {
+  const { createUser } = useContext(ContextProvider);
   const [showPassword, setShowPassword] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const image = form.image.value;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    createUser(email, password).then((result) => {
+      console.log(result.user);
+      const creationTime = result.user.metadata.creationTime;
+      const newUser = { name, image, email, creationTime };
+      fetch("http://localhost:4980/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            Swal.fire(
+              "User created!",
+              "Your account has been created. You can now log in.",
+              "success"
+            );
+            form.reset();
+          } else {
+            Swal.fire(
+              "Error!",
+              "The email address is already in use.",
+              "error"
+            );
+          }
+        });
+    });
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-4">Sign Up</h2>
-        <form className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              className="mt-1 block w-full px-4 py-2 border rounded-md focus:ring focus:ring-blue-200"
+              placeholder="Your name goes here"
+            />
+          </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Image Link
