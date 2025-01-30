@@ -24,7 +24,6 @@ const CampaignPage = () => {
       userName,
       email,
     };
-    console.log(newCampaign);
     fetch("http://localhost:4980/campaigns", {
       method: "POST",
       headers: {

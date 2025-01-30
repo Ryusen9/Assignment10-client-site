@@ -1,6 +1,5 @@
 import { Fade } from "react-awesome-reveal";
 import Button from "./Button";
-import { IoAlert } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 const Purpose = () => {
@@ -78,7 +77,6 @@ const Purpose = () => {
                 <Link>
                   <Button
                     text="Learn More"
-                    rightIcon={<IoAlert />}
                     classList={
                       "flex items-center justify-center bg-purple-400 p-3 rounded-lg hover:bg-purple-500 duration-300"
                     }

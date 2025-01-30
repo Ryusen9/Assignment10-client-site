@@ -8,6 +8,9 @@ import { Theme } from "@radix-ui/themes";
 import CampaignLayout from "./Layouts/CampaignLayout.jsx";
 import HomeLayout from "./Layouts/Homelayout.jsx";
 import CampaignDetails from "./Components/CampaignDetails.jsx";
+import Context from "./Context/Context.jsx";
+import Signup from "./Components/Signup.jsx";
+import Login from "./Components/Login.jsx";
 
 const routers = createBrowserRouter([
   {
@@ -16,26 +19,35 @@ const routers = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomeLayout/>,
+        element: <HomeLayout />,
         loader: () => fetch("http://localhost:4980/trendingCampaigns"),
       },
       {
+        path: "/register",
+        element: <Signup/>
+      },
+      {
+        path: "/login",
+        element: <Login/>
+      },
+      {
         path: "/addCampaign",
-        element: <CampaignLayout/>
+        element: <CampaignLayout />,
       },
       {
         path: "/campaignDetails/:id",
-        element: <CampaignDetails/>,
-        
-      }
-    ]
+        element: <CampaignDetails />,
+      },
+    ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Theme>
-      <RouterProvider router={routers} />
-    </Theme>
+    <Context>
+      <Theme>
+        <RouterProvider router={routers} />
+      </Theme>
+    </Context>
   </StrictMode>
 );

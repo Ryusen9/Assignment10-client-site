@@ -6,7 +6,6 @@ import { SlCalender } from "react-icons/sl";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 const Trending = ({ data }) => {
-  console.log(data);
   return (
     <div className="md:w-4/5 mx-auto flex flex-col font-Grotesk items-center justify-center h-full">
       <p className="text-xl md:text-4xl font-semibold text-center">
@@ -62,6 +61,13 @@ const Trending = ({ data }) => {
             </div>
           </div>
         ))}
+      </div>
+      <div>
+        <Link>
+          <Button text="See More"
+                    classList={
+                      "border-2 px-3 md:px-6 py-[10px] text-slate-600 hover:text-slate-200 text-sm md:text-base rounded-xl mt-3 text-white hover:bg-purple-500 duration-300"} />
+        </Link>
       </div>
     </div>
   );

@@ -7,7 +7,6 @@ import Trending from "../Components/Trending";
 
 const HomeLayout = () => {
   const data = useLoaderData()
-  console.log(data)
   return (
     <div>
       <div className="min-h-screen w-full">
