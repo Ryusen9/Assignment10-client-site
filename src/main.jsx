@@ -15,7 +15,8 @@ const routers = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomeLayout/>
+        element: <HomeLayout/>,
+        loader: () => fetch("http://localhost:4980/trendingCampaigns"),
       },
       {
         path: "/addCampaign",
