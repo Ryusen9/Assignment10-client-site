@@ -3,6 +3,8 @@ import { FaRegUser } from "react-icons/fa";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { SlCalender } from "react-icons/sl";
+import Button from "./Button";
+import { Link } from "react-router-dom";
 const Trending = ({ data }) => {
   console.log(data);
   return (
@@ -33,25 +35,29 @@ const Trending = ({ data }) => {
                 </p>
                 <p className="flex items-center text-sm">
                   <SlCalender /> Deadline:{" "}
-                  <span className="font-semibold ml-1">
-                    {card.deadline}
-                  </span>
+                  <span className="font-semibold ml-1">{card.deadline}</span>
                 </p>
                 <p className="flex items-center text-sm">
                   <FaRegUser /> Posted by :{" "}
-                  <span className="font-semibold ml-1">
-                    {card.userName}
-                  </span>
+                  <span className="font-semibold ml-1">{card.userName}</span>
                 </p>
                 <p className="flex items-center text-sm">
                   <MdOutlineAlternateEmail /> Email :{" "}
-                  <span className="font-semibold ml-1">
-                    {card.userName}
-                  </span>
+                  <span className="font-semibold ml-1">{card.userName}</span>
                 </p>
               </div>
               <div className="card-actions justify-end">
                 <div className="badge badge-outline">{card.category}</div>
+              </div>
+              <div>
+                <Link to={`/campaignDetails/${card._id}`}>
+                  <Button
+                    text="Details"
+                    classList={
+                      "border-2 px-3 md:px-6 py-[10px] text-slate-600 hover:text-slate-200 text-sm md:text-base rounded-xl mt-3 text-white hover:bg-purple-500 duration-300"
+                    }
+                  />
+                </Link>
               </div>
             </div>
           </div>

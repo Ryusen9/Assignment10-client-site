@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Theme } from "@radix-ui/themes";
 import CampaignLayout from "./Layouts/CampaignLayout.jsx";
 import HomeLayout from "./Layouts/Homelayout.jsx";
+import CampaignDetails from "./Components/CampaignDetails.jsx";
 
 const routers = createBrowserRouter([
   {
@@ -21,6 +22,11 @@ const routers = createBrowserRouter([
       {
         path: "/addCampaign",
         element: <CampaignLayout/>
+      },
+      {
+        path: "/campaignDetails/:id",
+        element: <CampaignDetails/>,
+        
       }
     ]
   },
