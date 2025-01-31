@@ -11,6 +11,7 @@ import CampaignDetails from "./Components/CampaignDetails.jsx";
 import Context from "./Context/Context.jsx";
 import Signup from "./Components/Signup.jsx";
 import Login from "./Components/Login.jsx";
+import AllCampaign from "./Components/AllCampaign.jsx";
 
 const routers = createBrowserRouter([
   {
@@ -38,6 +39,11 @@ const routers = createBrowserRouter([
         path: "/campaignDetails/:id",
         element: <CampaignDetails />,
       },
+      {
+        path: "/allCampaigns",
+        element: <AllCampaign/>,
+        loader: () => fetch("http://localhost:4980/campaigns")
+      }
     ],
   },
 ]);
