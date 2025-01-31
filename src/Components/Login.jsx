@@ -1,14 +1,34 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { ContextProvider } from "../Context/Context";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const {signInUser} = useContext(ContextProvider);
+  const handleLogIn = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    signInUser(email, password)
+    .then(result => {
+        if(result.user) {
+            Swal.fire({
+                title: 'Logged In!',
+                text: 'You have successfully logged in!',
+                icon:'success',
+                confirmButtonText: 'Continue'
+            })
+        }
+    })
+    e.target.reset();
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleLogIn}>
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Email

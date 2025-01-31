@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import {
   FaHome,
   FaPlusCircle,
@@ -10,12 +10,15 @@ import {
 } from "react-icons/fa";
 import { useWindowScroll } from "react-use";
 import gsap from "gsap";
+import { ContextProvider } from "../Context/Context";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const { y: currentScrollY } = useWindowScroll();
+  const {user} = useContext(ContextProvider);
+  console.log(user);
   const navRef = useRef(null);
   useEffect(() => {
     if (currentScrollY === 0) {
