@@ -19,7 +19,7 @@ const Signup = () => {
     createUser(email, password).then((result) => {
       console.log(result.user);
       const creationTime = result.user.metadata.creationTime;
-      const UID = result.user.metadata.createdAt;
+      const UID = result.user.uid;
       const newUser = { UID, name, image, email, creationTime };
       fetch("http://localhost:4980/users", {
         method: "POST",
