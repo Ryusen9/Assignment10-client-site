@@ -33,7 +33,6 @@ const DonationPage = () => {
     e.preventDefault();
 
     const donationAmount = e.target.amount.value;
-    console.log(donationAmount);
 
     fetch(`http://localhost:4980/users/${uid}`, {
       method: "PUT",
@@ -44,15 +43,23 @@ const DonationPage = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Update successful:", data);
-        Swal.fire({
-          title: "Donation Successful!",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        if (data) {
+          Swal.fire({
+            title: "Donation Successful!",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       })
-      .catch((error) => console.error("Error updating donation:", error));
+      .catch((error) => {
+        Swal.fire({
+          title: "Error Donating!",
+          text: error.message,
+          icon: "error",
+          confirmButtonText: "Continue",
+        });
+      });
   };
 
   if (loading) return <div className="text-center text-xl">Loading...</div>;

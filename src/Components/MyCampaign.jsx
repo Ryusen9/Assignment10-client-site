@@ -19,7 +19,11 @@ const MyCampaign = () => {
         const data = await response.json();
         setAllData(data);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        Swal.fire({
+          title: "Error fetching data!",
+          text: error.message,
+          icon: "error",
+        });
       } finally {
         setLoading(false);
       }

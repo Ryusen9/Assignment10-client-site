@@ -1,29 +1,31 @@
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ContextProvider } from "../Context/Context";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const {signInUser} = useContext(ContextProvider);
+  const { signInUser } = useContext(ContextProvider);
+  const navigate = useNavigate();
   const handleLogIn = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    signInUser(email, password)
-    .then(result => {
-        if(result.user) {
-            Swal.fire({
-                title: 'Logged In!',
-                text: 'You have successfully logged in!',
-                icon:'success',
-                confirmButtonText: 'Continue'
-            })
-        }
-    })
+    signInUser(email, password).then((result) => {
+      if (result.user) {
+        Swal.fire({
+          title: "Logged In!",
+          text: "You have successfully logged in!",
+          icon: "success",
+          confirmButtonText: "Continue",
+        }).then(() => {
+          navigate("/");
+        });
+      }
+    });
     e.target.reset();
-  }
+  };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">

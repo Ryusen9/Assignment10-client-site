@@ -50,7 +50,14 @@ const Navbar = () => {
       fetch(`http://localhost:4980/users/${user.uid}`)
         .then((response) => response.json())
         .then((result) => setData(result))
-        .catch((error) => console.error("Error fetching user data:", error));
+        .catch((error) => {
+          Swal.fire({
+            title: "Error Fetching User Data!",
+            text: error.message,
+            icon: "error",
+            confirmButtonText: "Continue",
+          })
+        });
     }
   }, [user?.uid]);
 

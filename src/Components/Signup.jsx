@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ContextProvider } from "../Context/Context";
 import Swal from "sweetalert2";
 // import Swal from "sweetalert2";
@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 const Signup = () => {
   const { createUser } = useContext(ContextProvider);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +18,6 @@ const Signup = () => {
     const email = form.email.value;
     const password = form.password.value;
     createUser(email, password).then((result) => {
-      console.log(result.user);
       const creationTime = result.user.metadata.creationTime;
       const UID = result.user.uid;
       const newUser = { UID, name, image, email, creationTime };
@@ -30,13 +30,14 @@ const Signup = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.insertedId) {
             Swal.fire(
               "User created!",
               "Your account has been created. You can now log in.",
               "success"
-            );
+            ).then(() => {
+              navigate("/");
+            });
             form.reset();
           } else {
             Swal.fire(
