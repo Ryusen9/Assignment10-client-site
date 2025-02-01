@@ -21,7 +21,7 @@ const Signup = () => {
       const creationTime = result.user.metadata.creationTime;
       const UID = result.user.uid;
       const newUser = { UID, name, image, email, creationTime };
-      fetch("http://localhost:4980/users", {
+      fetch("crowdcube-three.vercel.app/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

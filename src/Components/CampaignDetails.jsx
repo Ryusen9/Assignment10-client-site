@@ -11,7 +11,7 @@ const CampaignDetails = () => {
     const fetchCampaign = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4980/campaignDetails/${id}`
+          `crowdcube-three.vercel.app/campaignDetails/${id}`
         );
         if (!response.ok) throw new Error("Failed to fetch campaign details");
         const data = await response.json();

@@ -1,12 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
-import {
-  FaHome,
-  FaPlusCircle,
-  FaUser,
-  FaBars,
-  FaTimes,
-} from "react-icons/fa";
+import { FaHome, FaPlusCircle, FaUser, FaBars, FaTimes } from "react-icons/fa";
 import { useWindowScroll } from "react-use";
 import gsap from "gsap";
 import { ContextProvider } from "../Context/Context";
@@ -47,7 +41,7 @@ const Navbar = () => {
 
   useEffect(() => {
     if (user?.uid) {
-      fetch(`http://localhost:4980/users/${user.uid}`)
+      fetch(`crowdcube-three.vercel.app/users/${user.uid}`)
         .then((response) => response.json())
         .then((result) => setData(result))
         .catch((error) => {
@@ -56,7 +50,7 @@ const Navbar = () => {
             text: error.message,
             icon: "error",
             confirmButtonText: "Continue",
-          })
+          });
         });
     }
   }, [user?.uid]);

@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import { ContextProvider } from "../Context/Context";
 
 const CampaignPage = () => {
-  const {user} = useContext(ContextProvider);
+  const { user } = useContext(ContextProvider);
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -29,7 +29,7 @@ const CampaignPage = () => {
       userName,
       email,
     };
-    fetch("http://localhost:4980/campaigns", {
+    fetch("crowdcube-three.vercel.app/campaigns", {
       method: "POST",
       headers: {
         "content-type": "application/json",
