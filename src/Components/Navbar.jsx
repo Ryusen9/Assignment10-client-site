@@ -4,7 +4,6 @@ import {
   FaHome,
   FaPlusCircle,
   FaUser,
-  FaDonate,
   FaBars,
   FaTimes,
 } from "react-icons/fa";
@@ -57,24 +56,24 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     signOutUser()
-    .then(() => {
-      Swal.fire({
-        title: "Logged Out!",
-        text: "You have successfully logged out.",
-        icon: "success",
-        confirmButtonText: "Continue",
+      .then(() => {
+        Swal.fire({
+          title: "Logged Out!",
+          text: "You have successfully logged out.",
+          icon: "success",
+          confirmButtonText: "Continue",
+        });
       })
-    })
-    .catch(error => {
-      Swal.fire({
-        title: "Error Logging Out!",
-        text: error.message,
-        icon: "error",
-        confirmButtonText: "Continue",
+      .catch((error) => {
+        Swal.fire({
+          title: "Error Logging Out!",
+          text: error.message,
+          icon: "error",
+          confirmButtonText: "Continue",
+        });
       });
-    })
     setData(null);
-  }
+  };
 
   return (
     <div ref={navRef} className="fixed w-full top-0 z-50 bg-slate-100">
@@ -103,7 +102,10 @@ const Navbar = () => {
                 </div>
               </div>
               {user ? (
-                <button onClick={handleLogOut} className="btn btn-primary text-white outline-none border-none">
+                <button
+                  onClick={handleLogOut}
+                  className="btn btn-primary text-white outline-none border-none"
+                >
                   Logout
                 </button>
               ) : (
@@ -124,11 +126,6 @@ const Navbar = () => {
               label="Add Campaign"
             />
             <NavItem to="/myCampaign" icon={<FaUser />} label="My Campaign" />
-            <NavItem
-              to="/myDonations"
-              icon={<FaDonate />}
-              label="My Donation"
-            />
           </div>
         </div>
 
@@ -141,7 +138,10 @@ const Navbar = () => {
             >
               <div className="avatar">
                 <div className="ring-primary ring-offset-base-100 w-7 lg:w-10 rounded-full ring ring-offset-2">
-                  <img src={data?.image || "/public/Characters/user.svg"} alt="U" />
+                  <img
+                    src={data?.image || "/public/Characters/user.svg"}
+                    alt="U"
+                  />
                 </div>
               </div>
             </div>
@@ -151,7 +151,10 @@ const Navbar = () => {
             >
               <li>
                 {user ? (
-                  <button onClick={handleLogOut} className="btn btn-primary text-white outline-none border-none">
+                  <button
+                    onClick={handleLogOut}
+                    className="btn btn-primary text-white outline-none border-none"
+                  >
                     Logout
                   </button>
                 ) : (

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const CampaignDetails = () => {
-  const { id } = useParams(); // Get campaign ID from URL
+  const { id } = useParams();
   const [campaign, setCampaign] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -54,7 +54,7 @@ const CampaignDetails = () => {
             <strong>Created by:</strong> {campaign.userName} ({campaign.email})
           </p>
         </div>
-        <Link>
+        <Link to={`/myDonations/${campaign._id}`}>
           <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
             Donate Now
           </button>

@@ -13,6 +13,8 @@ import Signup from "./Components/Signup.jsx";
 import Login from "./Components/Login.jsx";
 import AllCampaign from "./Components/AllCampaign.jsx";
 import MyCampaign from "./Components/MyCampaign.jsx";
+import DonationPage from "./Components/DonationPage.jsx";
+import PrivateRoute from "./Routes/PrivateRoute.jsx";
 
 const routers = createBrowserRouter([
   {
@@ -26,15 +28,19 @@ const routers = createBrowserRouter([
       },
       {
         path: "/register",
-        element: <Signup/>
+        element: <Signup />,
       },
       {
         path: "/login",
-        element: <Login/>
+        element: <Login />,
       },
       {
         path: "/addCampaign",
-        element: <CampaignLayout />,
+        element: (
+          <PrivateRoute>
+            <CampaignLayout />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/campaignDetails/:id",
@@ -42,13 +48,25 @@ const routers = createBrowserRouter([
       },
       {
         path: "/allCampaigns",
-        element: <AllCampaign/>,
-        loader: () => fetch("http://localhost:4980/campaigns")
+        element: <AllCampaign />,
+        loader: () => fetch("http://localhost:4980/campaigns"),
       },
       {
         path: "/myCampaign",
-        element: <MyCampaign/>
-      }
+        element: (
+          <PrivateRoute>
+            <MyCampaign />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myDonations/:id",
+        element: (
+          <PrivateRoute>
+            <DonationPage />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);
