@@ -12,6 +12,7 @@ import Context from "./Context/Context.jsx";
 import Signup from "./Components/Signup.jsx";
 import Login from "./Components/Login.jsx";
 import AllCampaign from "./Components/AllCampaign.jsx";
+import MyCampaign from "./Components/MyCampaign.jsx";
 
 const routers = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const routers = createBrowserRouter([
         path: "/allCampaigns",
         element: <AllCampaign/>,
         loader: () => fetch("http://localhost:4980/campaigns")
+      },
+      {
+        path: "/myCampaign",
+        element: <MyCampaign/>
       }
     ],
   },

@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { ContextProvider } from "../Context/Context";
 
 const CampaignPage = () => {
+  const {user} = useContext(ContextProvider);
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -13,8 +16,10 @@ const CampaignPage = () => {
     const deadline = formData.get("deadline");
     const userName = formData.get("username");
     const email = formData.get("email");
+    const UID = user.uid;
 
     const newCampaign = {
+      UID,
       image,
       tittle,
       category,

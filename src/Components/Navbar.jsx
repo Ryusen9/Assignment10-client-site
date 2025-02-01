@@ -12,6 +12,7 @@ import { useWindowScroll } from "react-use";
 import gsap from "gsap";
 import { ContextProvider } from "../Context/Context";
 import PropTypes from "prop-types";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,7 +44,7 @@ const Navbar = () => {
   }, [isVisible]);
 
   const [data, setData] = useState(null);
-  const { user } = useContext(ContextProvider);
+  const { user, signOutUser } = useContext(ContextProvider);
 
   useEffect(() => {
     if (user?.uid) {
@@ -53,6 +54,27 @@ const Navbar = () => {
         .catch((error) => console.error("Error fetching user data:", error));
     }
   }, [user?.uid]);
+
+  const handleLogOut = () => {
+    signOutUser()
+    .then(() => {
+      Swal.fire({
+        title: "Logged Out!",
+        text: "You have successfully logged out.",
+        icon: "success",
+        confirmButtonText: "Continue",
+      })
+    })
+    .catch(error => {
+      Swal.fire({
+        title: "Error Logging Out!",
+        text: error.message,
+        icon: "error",
+        confirmButtonText: "Continue",
+      });
+    })
+    setData(null);
+  }
 
   return (
     <div ref={navRef} className="fixed w-full top-0 z-50 bg-slate-100">
@@ -80,11 +102,17 @@ const Navbar = () => {
                   <img src={data?.image || "default-avatar.png"} alt="User" />
                 </div>
               </div>
-              <Link to="/login">
-                <button className="btn btn-primary text-white outline-none border-none">
-                  Login
+              {user ? (
+                <button onClick={handleLogOut} className="btn btn-primary text-white outline-none border-none">
+                  Logout
                 </button>
-              </Link>
+              ) : (
+                <Link to="/login">
+                  <button className="btn btn-primary text-white outline-none border-none">
+                    Login
+                  </button>
+                </Link>
+              )}
             </div>
           )}
 
@@ -113,7 +141,7 @@ const Navbar = () => {
             >
               <div className="avatar">
                 <div className="ring-primary ring-offset-base-100 w-7 lg:w-10 rounded-full ring ring-offset-2">
-                  <img src={data?.image || "default-avatar.png"} alt="User" />
+                  <img src={data?.image || "/public/Characters/user.svg"} alt="U" />
                 </div>
               </div>
             </div>
@@ -123,7 +151,7 @@ const Navbar = () => {
             >
               <li>
                 {user ? (
-                  <button className="btn btn-primary text-white outline-none border-none">
+                  <button onClick={handleLogOut} className="btn btn-primary text-white outline-none border-none">
                     Logout
                   </button>
                 ) : (

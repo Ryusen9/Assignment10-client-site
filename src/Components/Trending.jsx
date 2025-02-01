@@ -15,7 +15,7 @@ const Trending = ({ data }) => {
         {data.map((card) => (
           <div key={card._id} className="card bg-base-100 shadow-xl">
             <figure>
-              <img src={card.image} alt="Shoes" />
+              <img src={card.image} alt="photo" className="h-[30vh] w-full object-cover"/>
             </figure>
             <div className="card-body">
               <h2 className="card-title">
@@ -42,7 +42,7 @@ const Trending = ({ data }) => {
                 </p>
                 <p className="flex items-center text-sm">
                   <MdOutlineAlternateEmail /> Email :{" "}
-                  <span className="font-semibold ml-1">{card.userName}</span>
+                  <span className="font-semibold ml-1">{card.email}</span>
                 </p>
               </div>
               <div className="card-actions justify-end">
@@ -53,7 +53,7 @@ const Trending = ({ data }) => {
                   <Button
                     text="Details"
                     classList={
-                      "border-2 px-3 md:px-6 py-[10px] text-black hover:text-slate-200 text-sm md:text-base rounded-xl mt-3 text-white hover:bg-purple-500 duration-300"
+                      "btn"
                     }
                   />
                 </Link>
@@ -67,7 +67,7 @@ const Trending = ({ data }) => {
           <Button
             text="See More"
             classList={
-              "border-2 px-3 md:px-6 py-[10px] text-black hover:text-slate-200 text-sm md:text-base rounded-xl mt-3 text-white hover:bg-purple-500 duration-300"
+              "btn"
             }
           />
         </Link>
