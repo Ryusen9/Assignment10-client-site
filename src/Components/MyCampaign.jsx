@@ -15,7 +15,7 @@ const MyCampaign = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `crowdcube-three.vercel.app/myCampaign/${uid}`
+          `https://crowdcube-three.vercel.app/myCampaign/${uid}`
         );
         if (!response.ok) throw new Error("Failed to fetch data");
         const data = await response.json();
@@ -47,7 +47,7 @@ const MyCampaign = () => {
       if (result.isConfirmed) {
         try {
           const response = await fetch(
-            `crowdcube-three.vercel.app/deleteCampaign/${campaignId}`,
+            `https://crowdcube-three.vercel.app/deleteCampaign/${campaignId}`,
             {
               method: "DELETE",
             }

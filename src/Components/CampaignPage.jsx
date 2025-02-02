@@ -29,7 +29,7 @@ const CampaignPage = () => {
       userName,
       email,
     };
-    fetch("crowdcube-three.vercel.app/campaigns", {
+    fetch("https://crowdcube-three.vercel.app/campaigns", {
       method: "POST",
       headers: {
         "content-type": "application/json",

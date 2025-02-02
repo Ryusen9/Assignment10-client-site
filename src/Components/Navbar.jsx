@@ -41,7 +41,7 @@ const Navbar = () => {
 
   useEffect(() => {
     if (user?.uid) {
-      fetch(`crowdcube-three.vercel.app/users/${user.uid}`)
+      fetch(`https://crowdcube-three.vercel.app/users/${user.uid}`)
         .then((response) => response.json())
         .then((result) => setData(result))
         .catch((error) => {

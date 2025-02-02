@@ -24,7 +24,8 @@ const routers = createBrowserRouter([
       {
         path: "/",
         element: <HomeLayout />,
-        loader: () => fetch("crowdcube-three.vercel.app/trendingCampaigns"),
+        loader: () =>
+          fetch("https://crowdcube-three.vercel.app/trendingCampaigns"),
       },
       {
         path: "/register",
@@ -49,7 +50,7 @@ const routers = createBrowserRouter([
       {
         path: "/allCampaigns",
         element: <AllCampaign />,
-        loader: () => fetch("crowdcube-three.vercel.app/campaigns"),
+        loader: () => fetch("https://crowdcube-three.vercel.app/campaigns"),
       },
       {
         path: "/myCampaign",
